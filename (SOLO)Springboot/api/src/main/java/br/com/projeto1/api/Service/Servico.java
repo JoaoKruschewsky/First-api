@@ -24,6 +24,16 @@ public class Servico {
     @Autowired
     private Repositorio acao;
 
+    // selecionar pelo Id
+    public ResponseEntity<?> selectbyid(int id) {
+        if (acao.findById(id) == null) {
+            mensagem.setMensagem("Nao existe produto oom esse id");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(acao.findById(id), HttpStatus.OK);
+        }
+    }
+
     // selecionar pelo nome
     public ResponseEntity<?> selectbyname(String name) {
         if (acao.findByNameproduct(name) == null) {
@@ -34,8 +44,23 @@ public class Servico {
         }
     }
 
+    // deletar pelo id
+    public ResponseEntity<?> deletebyid(int id) {
+
+        if (acao.findById(id) == null) {
+            mensagem.setMensagem("Nao existe produto oom esse id");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        } else {
+            Loja obj = acao.findById(id);
+            acao.delete(obj);
+            mensagem.setMensagem("Produto deletado com sucesso");
+            return new ResponseEntity<>(mensagem, HttpStatus.OK);
+        }
+    }
+
+    // deletar pelo nome
     public ResponseEntity<?> delete(String name) {
-        if (selectbyname(name) == null) {
+        if (acao.findByNameproduct(name) == null) {
             mensagem.setMensagem("Esse produto nao existe.");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else {
@@ -43,7 +68,7 @@ public class Servico {
             acao.delete(obj);
             mensagem.setMensagem("Produto deletado com sucesso.");
             return new ResponseEntity<>(mensagem, HttpStatus.OK);
-            
+
         }
     }
 

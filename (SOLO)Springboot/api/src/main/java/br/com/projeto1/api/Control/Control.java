@@ -41,20 +41,20 @@ public class Control {
     }
 
     // Selecionar pelo id
-    @GetMapping("selecionar{id}")
-    public Loja selecionarpelocodigo(@PathVariable int id) {
-        return acao.findById(id);
+    @GetMapping("selecionarpeloid/{id}")
+    public ResponseEntity<?> selecionarpelocodigo(@PathVariable int id) {
+        return servico.selectbyid(id);
     }
 
     // Selecionar pelo name
-    @GetMapping("selecionar/{name}")
+    @GetMapping("selecionarpelonome/{name}")
     public ResponseEntity<?> selectbyname(@PathVariable String name) {
         return servico.selectbyname(name);
     }
     // Selecionar pelo name e update por ele
 
     @Transactional
-    @PutMapping("selecionar/{name}/{novaquantidade}")
+    @PutMapping("atualizar/{name}/{novaquantidade}")
     public ResponseEntity<?> updatebyname(@PathVariable int novaquantidade, @PathVariable String name) {
         return servico.uptadebyname(novaquantidade, name);
 
@@ -63,21 +63,16 @@ public class Control {
     // Deletarbyname
 
     @Transactional
-    @DeleteMapping("deletar/{name}")
+    @DeleteMapping("deletarpelonome/{name}")
     public ResponseEntity<?> deletebyname(@PathVariable String name) {
         return servico.delete(name);
     }
 
     // Deletarbycodigo
-    @DeleteMapping("deletar{id}")
-    public void delete(@PathVariable int id) {
-        Loja obj = selecionarpelocodigo(id);
-
-        acao.delete(obj);
+    @Transactional
+    @DeleteMapping("deletarpeloid/{id}")
+    public ResponseEntity<?> deletebyid(@PathVariable int id) {
+        return servico.deletebyid(id);
     }
 
-    @GetMapping("/")
-    public String algo() {
-        return "Olá negodi";
-    }
 }
