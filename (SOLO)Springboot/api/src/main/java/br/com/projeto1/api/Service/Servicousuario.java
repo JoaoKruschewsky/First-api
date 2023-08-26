@@ -17,8 +17,8 @@ public class Servicousuario {
     @Autowired
     private Mensagem mensagem;
 
-    public ResponseEntity<?> cadastrar(Usuario user){
-        if (acao.countByUser(user) == null) {
+    public ResponseEntity<?> cadastrar(Usuario user, String email){
+        if (acao.countByEmail(email) == null) {
             
             return new ResponseEntity<>(acao.save(user), HttpStatus.OK);
         } else {

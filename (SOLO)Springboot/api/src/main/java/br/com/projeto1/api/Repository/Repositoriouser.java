@@ -6,5 +6,5 @@ import br.com.projeto1.api.Models.Usuario;
 
 public interface Repositoriouser extends CrudRepository<Usuario, Long> {
 
-    Usuario countByUser(Usuario user);
+    String countByEmail(String email);
 }

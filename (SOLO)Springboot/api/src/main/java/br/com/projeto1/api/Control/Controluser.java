@@ -21,8 +21,8 @@ public class Controluser {
     private Servicousuario servico;
 
     @PostMapping("/cadastrarusuario")
-    public ResponseEntity<?> cadastrar(@RequestBody Usuario obj){
-        return servico.cadastrar(obj);
-        
+    public ResponseEntity<?> cadastrar(@RequestBody Usuario obj, @RequestBody String email) {
+        return servico.cadastrar(obj, email);
+
     }
 }
