@@ -2,6 +2,7 @@ package br.com.projeto1.api.Control;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import br.com.projeto1.api.Repository.Repositoriouser;
 import br.com.projeto1.api.Service.Servicousuario;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class Controluser {
     @Autowired
     private Repositoriouser acao;
