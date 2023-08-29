@@ -26,4 +26,15 @@ public class Servicousuario {
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
     }
+
+    public ResponseEntity<?> procurarpeloemail(String email){
+        if (acao.countByEmail(email) == null) {
+            
+            
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            mensagem.setMensagem("Já tem uma conta nesse email. Coloque outro");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
