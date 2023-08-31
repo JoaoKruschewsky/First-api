@@ -26,7 +26,7 @@ public class Servicousuario {
             
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(acao.countByEmail(email), HttpStatus.OK);
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
     }
 }
