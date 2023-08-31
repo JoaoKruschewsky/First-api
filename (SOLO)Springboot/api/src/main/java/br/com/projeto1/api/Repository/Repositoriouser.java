@@ -7,7 +7,7 @@ import br.com.projeto1.api.Models.Usuario;
 
 public interface Repositoriouser extends CrudRepository<Usuario, Long> {
 
-    String countByEmail(String email);
+    String findByEmail(String email);
 
     List<Usuario> findAll();
 }

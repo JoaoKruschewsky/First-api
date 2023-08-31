@@ -33,12 +33,12 @@ public class Controluser {
     }
 
     @GetMapping("/procurarpeloemail")
-    public ResponseEntity<?> procurarpeloemail(@RequestBody String email) {
-        return servico.procurarpeloemail(email);
+    public String procurarpeloemail(@RequestBody String email) {
+        return acao.findByEmail(email);
     }
 
     @GetMapping("/Listar")
-    public List<Usuario> Listar(){
+    public List<Usuario> Listar() {
         return acao.findAll();
     }
 }

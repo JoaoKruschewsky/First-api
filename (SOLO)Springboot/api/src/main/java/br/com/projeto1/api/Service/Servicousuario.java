@@ -20,7 +20,7 @@ public class Servicousuario {
 
     
 
-    public ResponseEntity<?> procurarpeloemail(String email){
+    /*public ResponseEntity<?> procurarpeloemail(String email){
         if (acao.countByEmail(email) == null) {
             
             
@@ -28,5 +28,5 @@ public class Servicousuario {
         } else {
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 }
