@@ -17,15 +17,8 @@ public class Servicousuario {
     @Autowired
     private Mensagem mensagem;
 
-    public ResponseEntity<?> cadastrar(Usuario user, String email){
-        if (acao.countByEmail(email) == null) {
-            
-            return new ResponseEntity<>(acao.save(user), HttpStatus.OK);
-        } else {
-            mensagem.setMensagem("Esse usuario já está cadastrado.");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        }
-    }
+
+    
 
     public ResponseEntity<?> procurarpeloemail(String email){
         if (acao.countByEmail(email) == null) {
@@ -33,8 +26,7 @@ public class Servicousuario {
             
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            mensagem.setMensagem("Já tem uma conta nesse email. Coloque outro");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(acao.countByEmail(email), HttpStatus.OK);
         }
     }
 }
