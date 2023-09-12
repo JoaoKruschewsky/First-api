@@ -24,9 +24,6 @@ import br.com.projeto1.api.Service.Servicousuario;
 public class Controluser {
     @Autowired
     private Repositoriouser acao;
-    
-    @Autowired
-    private Useremail useremail;
 
     @Autowired
     private Servicousuario servico;
