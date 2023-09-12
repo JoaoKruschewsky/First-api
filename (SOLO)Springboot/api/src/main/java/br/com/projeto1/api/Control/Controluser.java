@@ -38,8 +38,10 @@ public class Controluser {
     }
 
     @GetMapping("/procurarpeloemail")
-    public List<Usuario> procurarpeloemail(@RequestParam String email) {
+    public List<Usuario> procurarpeloemail(@RequestBody Useremail emailuser) {
      
+      String email = emailuser.getUseremail();
+
       return acao.findByEmail(email);
 
     }
