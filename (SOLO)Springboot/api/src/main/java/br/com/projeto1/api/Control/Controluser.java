@@ -26,6 +26,7 @@ public class Controluser {
 
     @Autowired
     private Useremail useremail;
+    
     @Autowired
     private Servicousuario servico;
 
@@ -37,8 +38,10 @@ public class Controluser {
 
     @GetMapping("/procurarpeloemail")
     public List<Usuario> procurarpeloemail(@RequestBody String email) {
+        
       useremail.setUseremail(email);
       String emailuser = useremail.getUseremail();
+      
 
       return acao.findByEmail(emailuser);
 
