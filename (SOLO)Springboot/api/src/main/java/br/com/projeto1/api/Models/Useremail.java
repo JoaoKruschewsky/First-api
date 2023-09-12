@@ -1,5 +1,8 @@
 package br.com.projeto1.api.Models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Useremail {
     private String useremail;
 

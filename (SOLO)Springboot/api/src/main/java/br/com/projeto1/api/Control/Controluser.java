@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projeto1.api.Models.Useremail;
@@ -23,10 +24,10 @@ import br.com.projeto1.api.Service.Servicousuario;
 public class Controluser {
     @Autowired
     private Repositoriouser acao;
-
+    
     @Autowired
     private Useremail useremail;
-    
+
     @Autowired
     private Servicousuario servico;
 
@@ -37,13 +38,9 @@ public class Controluser {
     }
 
     @GetMapping("/procurarpeloemail")
-    public List<Usuario> procurarpeloemail(@RequestBody String email) {
-        
-      useremail.setUseremail(email);
-      String emailuser = useremail.getUseremail();
-      
-
-      return acao.findByEmail(emailuser);
+    public List<Usuario> procurarpeloemail(@RequestParam String email) {
+     
+      return acao.findByEmail(email);
 
     }
 
