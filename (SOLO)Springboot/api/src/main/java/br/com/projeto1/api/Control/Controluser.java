@@ -35,7 +35,7 @@ public class Controluser {
     }
 
     @GetMapping("/procurarpeloemail")
-    public List<Usuario> procurarpeloemail(@RequestBody Useremail emailuser) {
+    public Usuario procurarpeloemail(@RequestBody Useremail emailuser) {
      
       String email = emailuser.getUseremail();
 
